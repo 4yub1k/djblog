@@ -3,5 +3,7 @@ exclude =
     .venv
     .vscode
     migrations
+    .git
+    tests
 
 max-line-length = 160
