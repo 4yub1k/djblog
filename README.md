@@ -52,7 +52,7 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
-Now go to login page enter ther super user credentials.
+Now go to login page enter super user credentials.
 
 #### Tests:
 ```
@@ -64,7 +64,7 @@ pytest
 #### Login Page:
 ![image](https://user-images.githubusercontent.com/45902447/218100144-c4f2c029-4574-41f4-98ea-049d411ec16b.png)
 
-#### Regustration Page:
+#### Registration Page:
 ![image](https://user-images.githubusercontent.com/45902447/218100250-40e72d8a-c679-480c-b34f-4f353e5b29d3.png)
 
 #### Add Post:
