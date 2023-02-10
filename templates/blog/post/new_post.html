@@ -46,14 +46,15 @@ https://docs.djangoproject.com/en/4.1/topics/forms/
           <label for="{{form.content.id_for_label}}" class="form-label"
             >{{form.content.label_tag}}</label
           >
-          <textarea
+          {% comment %} <textarea
             class="form-control"
             name="{{form.content.html_name}}"
             required_id="{{form.content.id_for_label}}"
             rows="4"
             required
             maxlength="2000"
-          ></textarea>
+          ></textarea> {% endcomment %}
+          {{form.content}}
           {{form.content.errors}}
         </div>
         <div class="mb-3">

@@ -26,8 +26,7 @@ https://docs.djangoproject.com/en/4.1/topics/forms/
             </div>
             <div class="mb-3">
                 <label for={{form.content.id_for_label}} class="form-label">{{form.content.label_tag}}</label>
-                <textarea class="form-control" name={{form.content.html_name}} required_id={{form.content.id_for_label}} rows="4" required
-                    maxlength="2000">{{posts.content}}</textarea>
+                {{form.content}}
                 {{form.content.errors}}
             </div>
             <div class="mb-3">
