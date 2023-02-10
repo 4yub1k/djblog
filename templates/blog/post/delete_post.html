@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="card mb-3 mt-3">
+    <div class="card-header">Delete</div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{post}}" post?</p>
+        <input
+          class="btn btn-outline-danger btn-sm"
+          type="submit"
+          value="Delete"
+        />
+      </form>
+    </div>
+    <div class="card-footer">
+      <small class="me-auto">Published Date: {{post.post_on | date}}</small>
+    </div>
+  </div>
+</div>
+{% endblock content %}

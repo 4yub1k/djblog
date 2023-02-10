@@ -1,0 +1,12 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">Latest Posts</div>
+  <div class="card-body">
+    {% for post in latest %}
+    <p>
+      <a class="btn btn-sm btn-outline-dark" href="{{post.slug}}" role="button"
+        >{{ post }}</a
+      >
+    </p>
+    {% endfor %}
+  </div>
+</div>

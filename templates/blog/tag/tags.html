@@ -1,0 +1,19 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">Tags</div>
+  <div class="card-body">
+    {% for tag in tags|dictsort:"tag" %}
+    <small>
+      {% ifchanged tag.tag %}
+      <form class="d-inline" action="{% url 'tag_list_post' %}" method="get">
+        <input
+          type="submit"
+          name="tag"
+          class="btn btn-outline-dark btn-sm"
+          value="{{tag.tag}}"
+        />
+      </form>
+      {% endifchanged %}
+    </small>
+    {% endfor %}
+  </div>
+</div>
