@@ -26,16 +26,19 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "blog",                  # djblog.blog else pytest will ModuleNotFoundError: No module named 'djblog.blog'
+    "django_summernote",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -117,6 +120,28 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'djblog/static')
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SUMMERNOTE_THEME = 'bs5'  # Show summernote with Bootstrap5
+# SUMMERNOTE_CONFIG = {
+#     'iframe': True,
+#     'summernote': {
+#         # As an example, using Summernote Air-mode
+#         'airMode': False,
+#         'width': '100%',
+#         'height': '100%',
+#         # 'toolbar': ['bold', 'italic', 'underline'],
+#     },
+#     # 'disable_attachment': True,
+# }
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

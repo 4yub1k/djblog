@@ -10,11 +10,11 @@
       <h2 class="card-title">{{post.title}}</h2>
       <p class="card-text">
         <small
-          >Author: {{post.author}}, Published Date: {{post.post_on|date:'F d,
-          Y'}}</small
+          >Author: {{post.author}}, Published Date: {{post.post_on|date:'F d, Y'}}</small
         >
       </p>
-      <p class="card-text">{{post.content|linebreaks}}</p>
+      {% comment %} Enabling, escape is calling for injection vulnerabilities, use it for trusted users. {% endcomment %}
+      <p class="card-text">{{post.content|safe}}</p> 
     </div>
   </div>
   {% include "blog/comment/comments.html" %}

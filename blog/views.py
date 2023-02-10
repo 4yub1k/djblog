@@ -7,6 +7,8 @@ from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 from .models import Post, Comment, PostTag
 from .forms import PostForm, RegisterForm
+from django_summernote.widgets import SummernoteWidget
+from django import forms
 # from django.forms import ValidationError
 
 
@@ -56,6 +58,13 @@ class AddPost(LoginRequiredMixin, CreateView):
     def form_invalid(self, form):
         return CreateView.form_invalid(self, form)
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["content"] = forms.CharField(
+            widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '400px'}}),
+            required=True, max_length=2000
+        )
+        return form
 
 class UpdatePost(UpdateView):
     """
@@ -84,6 +93,14 @@ class UpdatePost(UpdateView):
         context = super(UpdatePost, self).get_context_data(**kwargs)
         context['tags'] = PostTag.objects.get(post_tag=self.object.id)     # use get for unique row/entry
         return context
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["content"] = forms.CharField(
+            widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '400px'}}),
+            required=True, max_length=2000
+        )
+        return form
 
 
 class DeletePost(DeleteView):
