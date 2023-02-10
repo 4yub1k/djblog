@@ -58,3 +58,19 @@ Now go to login page enter ther super user credentials.
 ```
 pytest
 ```
+#### Home Page:
+![image](https://user-images.githubusercontent.com/45902447/218100011-89e5be96-af6c-45c1-8ec9-f9bf30f96bc8.png)
+
+#### Login Page:
+![image](https://user-images.githubusercontent.com/45902447/218100144-c4f2c029-4574-41f4-98ea-049d411ec16b.png)
+
+#### Regustration Page:
+![image](https://user-images.githubusercontent.com/45902447/218100250-40e72d8a-c679-480c-b34f-4f353e5b29d3.png)
+
+#### Add Post:
+![image](https://user-images.githubusercontent.com/45902447/218100379-930b4f1e-5fea-475f-a423-de3f3aa7c17e.png)
+
+#### Post:
+![image](https://user-images.githubusercontent.com/45902447/218100563-d6e0e92d-a264-4ca8-bbca-4281247c6fac.png)
+
+
