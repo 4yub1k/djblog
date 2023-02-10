@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container d-flex justify-content-center">
+  <div class="card mb-3 mt-3" style="width: 28rem">
+    <div class="card-header">Registeration</div>
+    <div class="card-body">
+      <form
+        action="{% url 'register' %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="{{form.username.id_for_label}}" class="form-label"
+            >{{form.username.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.username.html_name}}"
+            class="form-control"
+            required_id="{{form.username.id_for_label}}"
+            required
+            maxlength="150"
+          />
+          {{form.username.errors}}
+        </div>
+        <div class="mb-3">
+          <label for="{{form.email.id_for_label}}" class="form-label"
+            >{{form.email.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.email.html_name}}"
+            class="form-control"
+            required_id="{{form.email.id_for_label}}"
+            required
+            maxlength="254"
+          />
+          {{form.email.errors}}
+        </div>
+        <div class="mb-3">
+          <label for="{{form.password1.id_for_label}}" class="form-label"
+            >{{form.password1.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.password1.html_name}}"
+            class="form-control"
+            required_id="{{form.password1.id_for_label}}"
+            required
+            maxlength="254"
+          />
+          {{form.password1.errors}}
+        </div>
+        <div class="mb-3">
+          <label for="{{form.password2.id_for_label}}" class="form-label"
+            >{{form.password2.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.password2.html_name}}"
+            class="form-control"
+            required_id="{{form.password2.id_for_label}}"
+            required
+            maxlength="254"
+          />
+          {{form.password2.errors}}
+        </div>
+
+        <input type="submit" class="btn btn-outline-dark" value="Register" />
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

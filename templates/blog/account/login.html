@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section>
+  <div class="container py-3">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">Sign in</h3>
+
+            <form action="{% url 'login' %}" method="POST">
+              {% csrf_token %}
+              <div class="form-outline mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  name="username"
+                  autocomplete="username"
+                  maxlength="150"
+                  required=""
+                  id="id_username"
+                />
+                <label class="form-label">Username</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  autocomplete="current-password"
+                  required=""
+                  id="id_password"
+                />
+                <label class="form-label">Password</label>
+              </div>
+              <button class="btn btn-outline-dark" type="submit">
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

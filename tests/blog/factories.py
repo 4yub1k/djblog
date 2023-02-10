@@ -1,8 +1,8 @@
 import factory
 
 from django.contrib.auth.models import User
-from blog.models import Post, Comment
-
+from blog.models import Post, Comment, PostTag
+from django.utils.text import slugify
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -26,22 +26,31 @@ class User2Factory(factory.django.DjangoModelFactory):
     is_active = True
 
 
-class CommentFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Comment
-
-    author = factory.SubFactory(User2Factory)
-    comment = "nice!!!"
-
-
 class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Post
 
+    id = 2
     author = factory.SubFactory(UserFactory)
     title = "salah blog test"
     sub_title = "sub_title"
-    slug = "domain.com/salah-blog-test"
+    slug = slugify(f'{title}-{id}')
     content = "This is a blog"
     is_published = "Yes"
-    comment = factory.SubFactory(CommentFactory)
+
+
+class CommentFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Comment
+
+    author = factory.SubFactory(User2Factory)   
+    post_name = factory.SubFactory(PostFactory)
+    comment = "Nice Post"
+
+
+class TagFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = PostTag
+
+    post_tag = factory.SubFactory(PostFactory)
+    tag = "nature"

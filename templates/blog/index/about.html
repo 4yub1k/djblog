@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card mb-3 mt-3">
+    <div class="card-header">About Me</div>
+
+    <div class="card-body">
+      <div class="container" style="background-color: rgba(0, 0, 0, 0.03)">
+        <p class="card-text">{{comment.comment}}</p>
+      </div>
+      <p class="card-text mt-2">{% lorem 3 p %}</p>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

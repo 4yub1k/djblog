@@ -4,6 +4,7 @@ import os
 import sys
 from djblog.settings import base
 
+
 def main():
     """Run administrative tasks."""
 

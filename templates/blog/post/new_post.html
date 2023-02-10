@@ -1,0 +1,100 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+{% comment %}
+https://docs.djangoproject.com/en/4.1/topics/forms/ 
+{% endcomment %}
+<div class="container">
+  <div class="card mb-3 mt-3">
+    <div class="card-header">New Post</div>
+    <div class="card-body">
+      <form
+        action="{% url 'new_post' %}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="{{form.title.id_for_label}}" class="form-label"
+            >{{form.title.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.title.html_name}}"
+            class="form-control"
+            required_id="{{form.title.id_for_label}}"
+            required
+            maxlength="250"
+          />
+          {{form.title.errors}}
+        </div>
+        <div class="mb-3">
+          <label for="{{form.sub_title.id_for_label}}" class="form-label"
+            >{{form.sub_title.label_tag}}</label
+          >
+          <input
+            type="text"
+            name="{{form.sub_title.html_name}}"
+            class="form-control"
+            required_id="{{form.sub_title.id_for_label}}"
+            required
+            maxlength="400"
+          />
+          {{form.sub_title.errors}}
+        </div>
+        <div class="mb-3">
+          <label for="{{form.content.id_for_label}}" class="form-label"
+            >{{form.content.label_tag}}</label
+          >
+          <textarea
+            class="form-control"
+            name="{{form.content.html_name}}"
+            required_id="{{form.content.id_for_label}}"
+            rows="4"
+            required
+            maxlength="2000"
+          ></textarea>
+          {{form.content.errors}}
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-12">
+              <label for="{{form.tag.id_for_label}}" class="form-label"
+                >{{form.tag.label_tag}}</label
+              >
+            </div>
+            <div class="col-md-2">
+              <input
+                type="text"
+                name="{{form.tag.html_name}}"
+                class="form-control"
+                required_id="{{form.tag.id_for_label}}"
+                required
+                maxlength="10"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-12">
+              <label for="{{form.is_published.id_for_label}}" class="form-label"
+                >{{form.is_published.label_tag}}</label
+              >
+            </div>
+            <div class="col-md-2">
+              <select
+                class="form-select"
+                name="{{form.is_published.html_name}}"
+              >
+                {% for publish in form.is_published %} {{publish}} {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-dark" value="Publish" />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

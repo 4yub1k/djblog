@@ -1,0 +1,117 @@
+{% extends 'base.html'%}
+{% load static %} 
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      {% include 'partials/_alert.html' %}
+      {% for post in posts %}
+      <div class="card mb-3 mt-3">
+        {% if user.is_authenticated %}
+        <div class="card-header">
+          <a
+            class="btn btn-outline-dark btn-sm {% if not post.post_tag.author_id == user.id %} disabled {% endif %}"
+            href="{% url 'edit_post' post.post_tag.slug %}"
+            role="button"
+            >Edit</a
+          >
+          <a
+            class="btn btn-outline-danger btn-sm {% if not post.post_tag.author_id == user.id %} disabled {% endif %}"
+            href="{% url 'delete_post' post.post_tag.slug %}"
+            role="button"
+            >Delete</a
+          >
+        </div>
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title">{{post.post_tag.title}}</h2>
+          <p class="card-text">
+            <small>Author: {{post.post_tag.author}}</small> <br /><small
+              >Tags: {% for tag in post.post_tag.tag_post.all %} {{tag}} {% endfor %}</small
+            >
+          </p>
+          <p class="card-text">{{post.post_tag.sub_title}}</p>
+          <a
+            class="btn btn-sm btn-dark"
+            href="{% url 'detail_post' post.post_tag.slug  %}"
+            role="button"
+            >View Post</a
+          >
+        </div>
+        <div class="card-footer">
+          <small class="me-auto"
+            >Published Date: {{post.post_tag.post_on | date}}</small
+          >
+        </div>
+      </div>
+
+      {% empty %}
+      <div class="card mb-3 mt-3">
+        <div class="card-body">
+          <h2 class="card-text">No Posts 🧐</h2>
+          <a
+            href="{% url 'new_post' %}"
+            class="btn btn-outline-dark btn-sm"
+            role="button"
+            >New Post ?</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-4">
+      <div class="container">
+        <div class="card mb-3 mt-3">
+          <div class="card-header">Tag</div>
+          <div class="card-body">
+            {% for tag in posts %}
+            <small>
+              {% ifchanged tag.tag %} {% comment %} model.objects.values() get
+              the dict list of query instead of obj list, then sort the dict
+              using key as needed, then use ifchange to skip value if similar to
+              the last value {% endcomment %}
+              <form
+                class="d-inline"
+                action="{% url 'tag_list_post' %}"
+                method="get"
+              >
+                <input
+                  type="submit"
+                  name="tag"
+                  class="btn {% if tag.tag == request.GET.tag %} btn-dark {% else %} btn-outline-dark {% endif %} btn-sm"
+                  value="{{tag.tag}}"
+                />
+              </form>
+              <a
+                class="btn btn-close btn-sm btn-outline-dark"
+                href="{% url 'index' %}"
+                title="Clear"
+                role="button"
+              ></a>
+              {% endifchanged %}
+            </small>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card mb-3 mt-3">
+          <div class="card-header">Latest Posts</div>
+          <div class="card-body">
+            {% for post in posts %}
+            <p>
+              <a
+                class="btn btn-sm btn-outline-dark"
+                href="{% url 'detail_post' post.post_tag.slug %}"
+                role="button"
+                >{{post.post_tag.title}}</a
+              >
+            </p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "blog/paginate.html" %}
+{% endblock content %}

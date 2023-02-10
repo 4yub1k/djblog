@@ -1,0 +1,67 @@
+{% extends 'base.html'%} 
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      {% include 'partials/_alert.html' %} 
+      {% for post in posts %}
+      <div class="card mb-3 mt-3">
+        {% if user.is_authenticated %}
+        <div class="card-header">
+          <a
+            class="btn btn-outline-dark btn-sm {% if not post.author_id == user.id %} disabled {% endif %}"
+            href="{% url 'edit_post' post.slug %}"
+            role="button"
+            >Edit</a
+          >
+          <a
+            class="btn btn-outline-danger btn-sm {% if not post.author_id == user.id %} disabled {% endif %}"
+            href="{% url 'delete_post' post.slug %}"
+            role="button"
+            >Delete</a
+          >
+        </div>
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title">{{post.title}}</h2>
+          <p class="card-text">
+            <small>Author: {{post.author}}</small> <br /><small
+              >Tags: {% for tag in post.tag_post.all %} {{tag}} {% endfor %}</small
+            >
+          </p>
+          <p class="card-text">{{post.sub_title}}</p>
+          <a class="btn btn-sm btn-dark" href="{{post.slug}}" role="button"
+            >View Post</a
+          >
+        </div>
+        <div class="card-footer">
+          <small class="me-auto">Published Date: {{post.post_on | date}}</small>
+        </div>
+      </div>
+
+      {% empty %}
+      <div class="card mb-3 mt-3">
+        <div class="card-body">
+          <h2 class="card-text">No Posts 🧐</h2>
+          <a
+            href="{% url 'new_post' %}"
+            class="btn btn-outline-dark btn-sm"
+            role="button"
+            >New Post ?</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-4">
+      <div class="container">
+        {% include "blog/tag/tags.html" %} 
+        {% include "blog/post/latest_posts.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% include "blog/paginate.html" %}
+{% endblock content %}

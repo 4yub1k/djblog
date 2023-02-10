@@ -1,0 +1,22 @@
+{% extends 'base.html'%} 
+{% load static %}
+
+{% block content %}
+<div class="container">
+  {% include 'partials/_alert.html' %}
+  <div class="card mb-3 mt-3">
+    <div class="card-header">{{post.title}}</div>
+    <div class="card-body">
+      <h2 class="card-title">{{post.title}}</h2>
+      <p class="card-text">
+        <small
+          >Author: {{post.author}}, Published Date: {{post.post_on|date:'F d,
+          Y'}}</small
+        >
+      </p>
+      <p class="card-text">{{post.content|linebreaks}}</p>
+    </div>
+  </div>
+  {% include "blog/comment/comments.html" %}
+</div>
+{% endblock content %}

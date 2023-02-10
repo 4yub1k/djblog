@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <div class="card-header">Comments</div>
+  {% if user.is_authenticated %}
+  <form hx-post="{% url 'comment'%}">
+    <div class="card mb-3 mt-3 border-0">
+      <div class="card-body">
+        <div class="container">
+          {% csrf_token %}
+          <div class="mb-3">
+            <input type="hidden" name="post" value="{{post.id}}" />
+            <textarea
+              class="form-control"
+              name="comment"
+              id="{{post.id}}"
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-outline-dark btn-sm mb-3">
+            Add Comment
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  {% else %}
+  <div class="card-body">
+    <a
+      href="{% url 'login' %}"
+      class="btn btn-outline-dark btn-sm"
+      role="button"
+      >Login Required ⚠</a
+    >
+  </div>
+  {% endif %} {% for comment in post.comment_post.all %}
+  <div class="card-body">
+    <div class="container" style="background-color: rgba(0, 0, 0, 0.03)">
+      <p class="card-text">{{comment.comment}}</p>
+    </div>
+    <p class="card-text mt-2">
+      <small
+        >Author: {{comment.author}}, Comment Date: {{comment.post_date|date}}
+      </small>
+    </p>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,54 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'logo-my-blog-canva.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                My Blog 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link {% if request.path == "/" %} active border border-secondary rounded {% endif %}"
+                         href="{% url 'index' %}">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if "about" in request.path %} active border border-secondary rounded {% endif %}"
+                         href="{% url 'about' %}">About</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link
+                             {% if "new_post" in request.path %} active border border-secondary rounded {% endif %}
+                             " href="{% url 'new_post' %}">Add Post
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link
+                                {% if "login" in request.path %} active border border-secondary rounded {% endif %}
+                                " href="{% url 'login' %}">Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link
+                                {% if "register" in request.path %} active border border-secondary rounded {% endif %}
+                                " href="{% url 'register' %}">Register
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% if user.is_authenticated %}
+                    <div class="text-dark">{{user.username|capfirst}} 💎</div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
