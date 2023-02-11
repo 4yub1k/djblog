@@ -3,10 +3,16 @@
 My blog is simple neat and clean blog site built with Django, HTMX, and Bootstrap 5.
 
 ![](https://img.shields.io/badge/Django-4.1.6-green)
+![](https://img.shields.io/badge/Python-3.11.1-lightgreen)
 ![](https://github.com/4yub1k/djblog/actions/workflows/myBlog.yml/badge.svg)
-![](https://img.shields.io/badge/Release-0.0.2-orange)
+![](https://img.shields.io/badge/Release-0.0.3-orange)
 
-### Release 0.0.2:
+## Release 0.0.3:
+  [Sitemap Added](#sitemap)
+  
+![image](https://user-images.githubusercontent.com/45902447/218271793-7722c165-b2b6-45af-8045-13cf3c73f3ad.png)
+
+## Release 0.0.2:
   [Summernote WYSIWYG Editor Added](#edit-post)
   
 ![image](https://user-images.githubusercontent.com/45902447/218198174-d13d5e76-1dd4-448d-b868-88779e9cae82.png)
@@ -84,4 +90,11 @@ pytest
 #### Post:
 ![image](https://user-images.githubusercontent.com/45902447/218100563-d6e0e92d-a264-4ca8-bbca-4281247c6fac.png)
 
+#### Sitemap:
+![image](https://user-images.githubusercontent.com/45902447/218271824-62fdec95-d655-46b4-a86b-bfd09a3f2695.png)
 
+<p>
+  <a href="https://www.buymeacoffee.com/4yub1k" target="_blank">
+    <h1>Buy me a coffee ☕️</h1>
+  </a>
+</p>
