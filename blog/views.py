@@ -66,6 +66,7 @@ class AddPost(LoginRequiredMixin, CreateView):
         )
         return form
 
+
 class UpdatePost(UpdateView):
     """
     Update the post using slug.
