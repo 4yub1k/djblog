@@ -5,7 +5,7 @@ My blog is simple neat and clean blog site built with Django, HTMX, and Bootstra
 ![](https://img.shields.io/badge/Django-4.1.6-green)
 ![](https://img.shields.io/badge/Python-3.11.1-lightgreen)
 ![](https://github.com/4yub1k/djblog/actions/workflows/myBlog.yml/badge.svg)
-![](https://img.shields.io/badge/Release-0.0.3-orange)
+![](https://img.shields.io/badge/Release-1.2.0-orange)
 
 ## Release 1.2.0:
   [Sitemap Added](#sitemap)
