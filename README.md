@@ -3,10 +3,12 @@
 My blog is simple neat and clean blog site built with Django, HTMX, and Bootstrap 5.
 
 ![](https://img.shields.io/badge/Django-4.1.6-green)
-![](https://img.shields.io/badge/Tests-passing-brightgreen)
+![](https://github.com/4yub1k/djblog/actions/workflows/myBlog.yml/badge.svg)
 ![](https://img.shields.io/badge/Release-0.0.2-orange)
+
 ### Release 0.0.2:
-  Summernote WYSIWYG Editor Added.
+  [Summernote WYSIWYG Editor Added](#edit-post)
+  
 ![image](https://user-images.githubusercontent.com/45902447/218198174-d13d5e76-1dd4-448d-b868-88779e9cae82.png)
 
 <hr>
@@ -76,8 +78,8 @@ pytest
 #### Registration Page:
 ![image](https://user-images.githubusercontent.com/45902447/218100250-40e72d8a-c679-480c-b34f-4f353e5b29d3.png)
 
-#### Add Post:
-![image](https://user-images.githubusercontent.com/45902447/218100379-930b4f1e-5fea-475f-a423-de3f3aa7c17e.png)
+#### Edit Post:
+![image](https://user-images.githubusercontent.com/45902447/218264080-9e966f87-d18a-4852-bfa3-967a3c7bec32.png)
 
 #### Post:
 ![image](https://user-images.githubusercontent.com/45902447/218100563-d6e0e92d-a264-4ca8-bbca-4281247c6fac.png)
