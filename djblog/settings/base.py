@@ -27,6 +27,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "blog",                  # djblog.blog else pytest will ModuleNotFoundError: No module named 'djblog.blog'
     "django_summernote",
+    "django.contrib.sitemaps",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
