@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import MyBlogSitemap
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("blog.urls")),
     path('summernote/', include('django_summernote.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': MyBlogSitemap().get_sitemap_dict}, name='django.contrib.sitemaps.views.sitemap'),
 ]

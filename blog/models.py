@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
+from django.contrib.sitemaps import ping_google
+from django.conf import settings
 # import uuid
 
 
@@ -27,6 +29,17 @@ class Post(models.Model):
         # if self.slug is None:
         self.slug = slugify(f'{self.title}-{self.id}')      # id -> Post class id attributes auto by django.
         super(Post, self).save(*args, **kwargs)
+
+        if not settings.DEBUG:
+            try:
+                """
+                Best is to call "ping_google()" from a cron script, or scheduled task.
+                To call Manually, python manage.py ping_google [/sitemap.xml]
+                https://docs.djangoproject.com/en/4.1/ref/contrib/sitemaps/#django.contrib.sitemaps.ping_google
+                """
+                ping_google()
+            except Exception:
+                pass
 
     def __str__(self) -> str:
         return self.title
