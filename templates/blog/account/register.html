@@ -29,14 +29,14 @@
             >{{form.email.label_tag}}</label
           >
           <input
-            type="text"
+            type="email"
             name="{{form.email.html_name}}"
             class="form-control"
             required_id="{{form.email.id_for_label}}"
             required
             maxlength="254"
           />
-          {{form.email.errors}}
+          This is : {{form.email.errors}}
         </div>
         <div class="mb-3">
           <label for="{{form.password1.id_for_label}}" class="form-label"
