@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from blog.models import Post, Comment, PostTag
 from django.utils.text import slugify
 
+
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
@@ -35,15 +36,15 @@ class PostFactory(factory.django.DjangoModelFactory):
     title = "salah blog test"
     sub_title = "sub_title"
     slug = slugify(f'{title}-{id}')
-    content = "This is a blog"
-    is_published = "Yes"
+    content = "This is a blog",
+    is_published = "Yes",
 
 
 class CommentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Comment
 
-    author = factory.SubFactory(User2Factory)   
+    author = factory.SubFactory(User2Factory)
     post_name = factory.SubFactory(PostFactory)
     comment = "Nice Post"
 
