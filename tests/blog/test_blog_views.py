@@ -50,6 +50,7 @@ def test_login(client):
     response = client.post(url, data, follow=True)  # Redirect after login
     # print(response.redirect_chain)
     assert response.redirect_chain[0][1] == 302
+    assert User.objects.filter(username="ayubi").exists()
 
     response = client.post(reverse("logout"), follow=True)
     assert response.redirect_chain[0][1] == 302
