@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from .views import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.validators import validate_email
 
 
 class PostForm(forms.ModelForm):
@@ -26,9 +27,15 @@ class RegisterForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
     def clean_email(self):  # def clean_<fieldName>(self):
-        self.email = User.objects.filter(email=self.cleaned_data["email"]).exists()
+        self.email = self.cleaned_data["email"]
+        self.email_exists = User.objects.filter(email=self.email).exists()
 
-        if self.email:
+        try:
+            validate_email(self.email)
+        except Exception:
+            raise ValidationError("The email is invalid.")
+
+        if self.email_exists:
             raise ValidationError("Ops, something went wrong")  # supress this error for privacy if needed!
 
         return self.email

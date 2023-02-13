@@ -67,7 +67,7 @@ class AddPost(LoginRequiredMixin, CreateView):
         return form
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
     """
     Update the post using slug.
     """

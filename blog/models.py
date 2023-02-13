@@ -41,6 +41,9 @@ class Post(models.Model):
             except Exception:
                 pass
 
+    class Meta:
+        ordering = ["post_on"]
+
     def __str__(self) -> str:
         return self.title
 
