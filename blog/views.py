@@ -147,6 +147,7 @@ class SearchPost(ListView):
         search = super(SearchPost, self).get_queryset()
         return search.filter(content__contains=self.request.GET.get("search"))
 
+
 class RegisterUser(CreateView):
     """
     New user registeration.
