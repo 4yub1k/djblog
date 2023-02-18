@@ -125,3 +125,17 @@ def test_authenticated_pages(client, post_factory, tag_factory):
         reverse("edit_post", kwargs={"post_slug": post.slug}), data, follow=True
     )
     assert b"login" in response.content
+
+
+def test_search(client, post_factory):
+    """
+    Test the search functionality
+    """
+
+    post_factory(content="this is dummy text")
+
+    response = client.get(reverse("search"), {"search":"test"})
+    assert response.status_code == 200
+
+    response = client.get(reverse("search"), {"search":"dummy"})
+    assert b"No Posts found search again" not in response.content

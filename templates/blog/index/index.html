@@ -1,5 +1,5 @@
 {% extends 'base.html'%} 
-{% load static %}
+{% load static %} 
 
 {% block content %}
 <div class="container">
@@ -28,13 +28,16 @@
           <h2 class="card-title">{{post.title}}</h2>
           <p class="card-text">
             <small>Author: {{post.author}}</small> <br /><small
-              >Tags: {% for tag in post.tag_post.all %} {{tag}} {% endfor %}</small
-            >
+              >Tags: {% for tag in post.tag_post.all %} {{tag}} {% endfor%}
+            </small>
           </p>
           <p class="card-text">{{post.sub_title}}</p>
-          <a class="btn btn-sm btn-dark" href="{{post.slug}}" role="button"
-            >View Post</a
-          >
+          <a
+            class="btn btn-sm btn-dark"
+            href="{% url 'detail_post' post.slug %}"
+            role="button"
+            >View Post
+          </a>
         </div>
         <div class="card-footer">
           <small class="me-auto">Published Date: {{post.post_on | date}}</small>
@@ -44,24 +47,32 @@
       {% empty %}
       <div class="card mb-3 mt-3">
         <div class="card-body">
-          <h2 class="card-text">No Posts 🧐</h2>
+          <h2 class="card-text">
+            {% if "search" in request.path %} No Posts found search again ! 
+            {%else %} No Posts 🧐 {% endif %}
+          </h2>
+          {% if user.is_authenticated %}
           <a
             href="{% url 'new_post' %}"
             class="btn btn-outline-dark btn-sm"
             role="button"
-            >New Post ?</a
-          >
+            >New Post ?
+          </a>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
     </div>
     <div class="col-sm-4">
       <div class="container">
+        {% include "blog/index/search.html" %} 
+        {% if "search" not in request.path %} 
         {% include "blog/tag/tags.html" %} 
-        {% include "blog/post/latest_posts.html" %}
+        {% include "blog/post/latest_posts.html" %} 
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
-{% include "blog/paginate.html" %}
+{% include "blog/paginate.html" %} 
 {% endblock content %}

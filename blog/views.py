@@ -135,6 +135,18 @@ class TagListPost(ListView):
         return self.posts
 
 
+class SearchPost(ListView):
+    """
+    Search for keyword in blog posts.
+    """
+    model = Post
+    template_name = "blog/index/index.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        search = super(SearchPost, self).get_queryset()
+        return search.filter(content__contains=self.request.GET.get("search"))
+
 class RegisterUser(CreateView):
     """
     New user registeration.
