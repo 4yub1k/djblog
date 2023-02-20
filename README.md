@@ -5,7 +5,12 @@ My blog is simple neat and clean blog site built with Django, HTMX, and Bootstra
 ![](https://img.shields.io/badge/Django-4.1.6-green)
 ![](https://img.shields.io/badge/Python-3.11.1-lightgreen)
 ![](https://github.com/4yub1k/djblog/actions/workflows/myBlog.yml/badge.svg)
-![](https://img.shields.io/badge/Release-1.3.1-orange)
+![](https://img.shields.io/badge/Release-1.4.1-orange)
+
+## Release 1.4.1:
+  [Search Box](#search-box)
+  
+  Search box added, Now you can search a word in blogs. 
 
 ## Release 1.3.1:
   For blog views, Tests Added. Including Login, Registration, Pages,  Permissions.
@@ -95,6 +100,10 @@ pytest
 
 #### Sitemap:
 ![image](https://user-images.githubusercontent.com/45902447/218271824-62fdec95-d655-46b4-a86b-bfd09a3f2695.png)
+
+#### Search Box:
+![2023-02-18 20_50_24-Window](https://user-images.githubusercontent.com/45902447/220168613-0af99af0-be3a-4b1b-9f38-315ce83d791c.png)
+
 
 <p>
   <a href="https://www.buymeacoffee.com/4yub1k" target="_blank">
